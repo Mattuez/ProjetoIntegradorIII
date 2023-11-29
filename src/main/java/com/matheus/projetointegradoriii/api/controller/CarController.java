@@ -36,7 +36,6 @@ public class CarController {
         return carDTOAssembler.toDtoCollection(carService.getAllByAvailability(isAvailable));
     }
 
-
     @GetMapping("/{carId}")
     public CarDTO getById(@PathVariable("carId") Long carId) {
         return carDTOAssembler.toDTO(carService.getCar(carId));

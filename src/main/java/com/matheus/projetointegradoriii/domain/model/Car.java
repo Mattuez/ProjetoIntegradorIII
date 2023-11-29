@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(
@@ -67,4 +68,10 @@ public class Car {
             nullable = false
     )
     private Boolean isAvailable;
+
+    @OneToMany(
+            mappedBy = "car",
+            fetch = FetchType.LAZY
+    )
+    private List<Booking> bookings;
 }

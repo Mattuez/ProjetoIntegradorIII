@@ -99,13 +99,17 @@ public class BookingServiceImpl implements BookingService {
 
         booking.setStatus(BookingStatus.CLOSED);
 
-        return booking;
+        return bookingRepository.save(booking);
     }
 
     @Override
     public void delete(Long bookingId) {
 
         Booking booking = getBooking(bookingId);
+
+        if (booking.getStatus().equals(BookingStatus.OPENED)) {
+            throw new BusinessException("Opened bookings can't be deleted");
+        }
 
         bookingRepository.delete(booking);
     }
