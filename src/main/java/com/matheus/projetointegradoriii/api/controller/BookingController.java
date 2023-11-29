@@ -39,6 +39,11 @@ public class BookingController {
         return bookingDTOAssembler.toDTO(bookingService.getBooking(bookingId));
     }
 
+    @GetMapping("/customer/{customerId}")
+    public List<BookingDTO> getByCustomerId(@PathVariable("customerId") Long customerId) {
+        return bookingDTOAssembler.toDtoCollection(bookingService.getBookingsByCustomerId(customerId));
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public BookingDTO add(@RequestBody @Valid BookingInputDTO bookingInputDTO) {

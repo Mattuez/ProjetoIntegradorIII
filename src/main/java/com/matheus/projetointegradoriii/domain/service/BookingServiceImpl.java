@@ -35,7 +35,7 @@ public class BookingServiceImpl implements BookingService {
 
         Customer customer = customerService.getCustomer(customerId);
 
-        return bookingRepository.getBookingByCustomer(customer);
+        return customer.getBookings();
     }
 
     @Override
